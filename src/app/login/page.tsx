@@ -15,7 +15,7 @@ export default function Login() {
   });
   console.log(user);
   const [buttonDisabled, setButtonDisabled] = useState(false);
-  const onSubmit = async () => {
+  const onSubmit = async (e: any) => {
     try {
       setLoading(true);
       const response = await axios.post("/api/users/login", user);
@@ -40,7 +40,7 @@ export default function Login() {
     <div className="flex flex-col w-[50%] mx-auto">
       Login
       <hr />
-      <form action="" className="flex flex-col">
+      <div className="flex flex-col">
         <label htmlFor="email">Email</label>
         <input
           className="text-black"
@@ -65,13 +65,13 @@ export default function Login() {
           name="password"
           placeholder="password"
         />
-        <button onSubmit={onSubmit} type="submit">
+        <button onClick={onSubmit} type="submit">
           Login
         </button>
         <h3>
           <Link href="/signup">go on Signup</Link>
         </h3>
-      </form>
+      </div>
     </div>
   );
 }
